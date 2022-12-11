@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsp="http://www.w3.org/ns/ws-policy" xmlns:wsp1_2="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://BankService.services.ramesh/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" name="BankService" targetNamespace="http://BankService.services.ramesh/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <xsd:schema>
+      <xsd:import schemaLocation="http://localhost:8080/ws/bank?xsd=1" namespace="http://BankService.services.ramesh/" />
+    </xsd:schema>
+  </types>
+  <message name="createAccount">
+    <part name="parameters" element="tns:createAccount" />
+  </message>
+  <message name="createAccountResponse">
+    <part name="parameters" element="tns:createAccountResponse" />
+  </message>
+  <message name="InvalidInputValues">
+    <part name="fault" element="tns:InvalidInputValues" />
+  </message>
+  <message name="withdrawMoney">
+    <part name="parameters" element="tns:withdrawMoney" />
+  </message>
+  <message name="withdrawMoneyResponse">
+    <part name="parameters" element="tns:withdrawMoneyResponse" />
+  </message>
+  <message name="CantFindTheAccount">
+    <part name="fault" element="tns:CantFindTheAccount" />
+  </message>
+  <message name="InsufficientBalance">
+    <part name="fault" element="tns:InsufficientBalance" />
+  </message>
+  <message name="transferMoney">
+    <part name="parameters" element="tns:transferMoney" />
+  </message>
+  <message name="transferMoneyResponse">
+    <part name="parameters" element="tns:transferMoneyResponse" />
+  </message>
+  <message name="getAccounts">
+    <part name="parameters" element="tns:getAccounts" />
+  </message>
+  <message name="getAccountsResponse">
+    <part name="parameters" element="tns:getAccountsResponse" />
+  </message>
+  <message name="depositMoney">
+    <part name="parameters" element="tns:depositMoney" />
+  </message>
+  <message name="depositMoneyResponse">
+    <part name="parameters" element="tns:depositMoneyResponse" />
+  </message>
+  <message name="checkAccountBalance">
+    <part name="parameters" element="tns:checkAccountBalance" />
+  </message>
+  <message name="checkAccountBalanceResponse">
+    <part name="parameters" element="tns:checkAccountBalanceResponse" />
+  </message>
+  <portType name="BankService">
+    <operation name="createAccount">
+      <input wsam:Action="http://BankService.services.ramesh/BankService/createAccountRequest" message="tns:createAccount" />
+      <output wsam:Action="http://BankService.services.ramesh/BankService/createAccountResponse" message="tns:createAccountResponse" />
+      <fault wsam:Action="http://BankService.services.ramesh/BankService/createAccount/Fault/InvalidInputValues" name="InvalidInputValues" message="tns:InvalidInputValues" />
+    </operation>
+    <operation name="withdrawMoney">
+      <input wsam:Action="http://BankService.services.ramesh/BankService/withdrawMoneyRequest" message="tns:withdrawMoney" />
+      <output wsam:Action="http://BankService.services.ramesh/BankService/withdrawMoneyResponse" message="tns:withdrawMoneyResponse" />
+      <fault wsam:Action="http://BankService.services.ramesh/BankService/withdrawMoney/Fault/CantFindTheAccount" name="CantFindTheAccount" message="tns:CantFindTheAccount" />
+      <fault wsam:Action="http://BankService.services.ramesh/BankService/withdrawMoney/Fault/InvalidInputValues" name="InvalidInputValues" message="tns:InvalidInputValues" />
+      <fault wsam:Action="http://BankService.services.ramesh/BankService/withdrawMoney/Fault/InsufficientBalance" name="InsufficientBalance" message="tns:InsufficientBalance" />
+    </operation>
+    <operation name="transferMoney">
+      <input wsam:Action="http://BankService.services.ramesh/BankService/transferMoneyRequest" message="tns:transferMoney" />
+      <output wsam:Action="http://BankService.services.ramesh/BankService/transferMoneyResponse" message="tns:transferMoneyResponse" />
+      <fault wsam:Action="http://BankService.services.ramesh/BankService/transferMoney/Fault/CantFindTheAccount" name="CantFindTheAccount" message="tns:CantFindTheAccount" />
+      <fault wsam:Action="http://BankService.services.ramesh/BankService/transferMoney/Fault/InvalidInputValues" name="InvalidInputValues" message="tns:InvalidInputValues" />
+      <fault wsam:Action="http://BankService.services.ramesh/BankService/transferMoney/Fault/InsufficientBalance" name="InsufficientBalance" message="tns:InsufficientBalance" />
+    </operation>
+    <operation name="getAccounts">
+      <input wsam:Action="http://BankService.services.ramesh/BankService/getAccountsRequest" message="tns:getAccounts" />
+      <output wsam:Action="http://BankService.services.ramesh/BankService/getAccountsResponse" message="tns:getAccountsResponse" />
+    </operation>
+    <operation name="depositMoney">
+      <input wsam:Action="http://BankService.services.ramesh/BankService/depositMoneyRequest" message="tns:depositMoney" />
+      <output wsam:Action="http://BankService.services.ramesh/BankService/depositMoneyResponse" message="tns:depositMoneyResponse" />
+      <fault wsam:Action="http://BankService.services.ramesh/BankService/depositMoney/Fault/CantFindTheAccount" name="CantFindTheAccount" message="tns:CantFindTheAccount" />
+      <fault wsam:Action="http://BankService.services.ramesh/BankService/depositMoney/Fault/InvalidInputValues" name="InvalidInputValues" message="tns:InvalidInputValues" />
+    </operation>
+    <operation name="checkAccountBalance">
+      <input wsam:Action="http://BankService.services.ramesh/BankService/checkAccountBalanceRequest" message="tns:checkAccountBalance" />
+      <output wsam:Action="http://BankService.services.ramesh/BankService/checkAccountBalanceResponse" message="tns:checkAccountBalanceResponse" />
+      <fault wsam:Action="http://BankService.services.ramesh/BankService/checkAccountBalance/Fault/CantFindTheAccount" name="CantFindTheAccount" message="tns:CantFindTheAccount" />
+      <fault wsam:Action="http://BankService.services.ramesh/BankService/checkAccountBalance/Fault/InvalidInputValues" name="InvalidInputValues" message="tns:InvalidInputValues" />
+    </operation>
+  </portType>
+  <binding name="BankServicePortBinding" type="tns:BankService">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <operation name="createAccount">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="InvalidInputValues">
+        <soap:fault use="literal" name="InvalidInputValues" namespace="" />
+      </fault>
+    </operation>
+    <operation name="withdrawMoney">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="CantFindTheAccount">
+        <soap:fault use="literal" name="CantFindTheAccount" namespace="" />
+      </fault>
+      <fault name="InvalidInputValues">
+        <soap:fault use="literal" name="InvalidInputValues" namespace="" />
+      </fault>
+      <fault name="InsufficientBalance">
+        <soap:fault use="literal" name="InsufficientBalance" namespace="" />
+      </fault>
+    </operation>
+    <operation name="transferMoney">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="CantFindTheAccount">
+        <soap:fault use="literal" name="CantFindTheAccount" namespace="" />
+      </fault>
+      <fault name="InvalidInputValues">
+        <soap:fault use="literal" name="InvalidInputValues" namespace="" />
+      </fault>
+      <fault name="InsufficientBalance">
+        <soap:fault use="literal" name="InsufficientBalance" namespace="" />
+      </fault>
+    </operation>
+    <operation name="getAccounts">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="depositMoney">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="CantFindTheAccount">
+        <soap:fault use="literal" name="CantFindTheAccount" namespace="" />
+      </fault>
+      <fault name="InvalidInputValues">
+        <soap:fault use="literal" name="InvalidInputValues" namespace="" />
+      </fault>
+    </operation>
+    <operation name="checkAccountBalance">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="CantFindTheAccount">
+        <soap:fault use="literal" name="CantFindTheAccount" namespace="" />
+      </fault>
+      <fault name="InvalidInputValues">
+        <soap:fault use="literal" name="InvalidInputValues" namespace="" />
+      </fault>
+    </operation>
+  </binding>
+  <service name="BankService">
+    <port name="BankServicePort" binding="tns:BankServicePortBinding">
+      <soap:address location="http://localhost:8080/ws/bank" />
+    </port>
+  </service>
+</definitions>

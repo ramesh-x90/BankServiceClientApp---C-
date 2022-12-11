@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://BankService.services.ramesh/" targetNamespace="http://BankService.services.ramesh/" version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="CantFindTheAccount" type="tns:CantFindTheAccount" />
+  <xs:element name="InsufficientBalance" type="tns:InsufficientBalance" />
+  <xs:element name="InvalidInputValues" type="tns:InvalidInputValues" />
+  <xs:element name="checkAccountBalance" type="tns:checkAccountBalance" />
+  <xs:element name="checkAccountBalanceResponse" type="tns:checkAccountBalanceResponse" />
+  <xs:element name="createAccount" type="tns:createAccount" />
+  <xs:element name="createAccountResponse" type="tns:createAccountResponse" />
+  <xs:element name="depositMoney" type="tns:depositMoney" />
+  <xs:element name="depositMoneyResponse" type="tns:depositMoneyResponse" />
+  <xs:element name="getAccounts" type="tns:getAccounts" />
+  <xs:element name="getAccountsResponse" type="tns:getAccountsResponse" />
+  <xs:element name="transferMoney" type="tns:transferMoney" />
+  <xs:element name="transferMoneyResponse" type="tns:transferMoneyResponse" />
+  <xs:element name="withdrawMoney" type="tns:withdrawMoney" />
+  <xs:element name="withdrawMoneyResponse" type="tns:withdrawMoneyResponse" />
+  <xs:complexType name="account">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:baseAccount">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="firstName" type="xs:string" />
+          <xs:element minOccurs="0" name="lastName" type="xs:string" />
+          <xs:element minOccurs="0" name="phoneNo" type="xs:string" />
+          <xs:element minOccurs="0" name="address" type="xs:string" />
+          <xs:element minOccurs="0" name="NIC" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="baseAccount" abstract="true">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="id" type="xs:string" />
+      <xs:element name="balance" type="xs:double" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="createAccountRes">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="acc" type="tns:baseAccount" />
+      <xs:element minOccurs="0" name="passCode" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="withdrawMoney">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="accountId" type="xs:string" />
+      <xs:element minOccurs="0" name="passCode" type="xs:string" />
+      <xs:element name="withdrawAmount" type="xs:double" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="withdrawMoneyResponse">
+    <xs:sequence>
+      <xs:element name="return" type="xs:double" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="CantFindTheAccount">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="message" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="InvalidInputValues">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="message" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="InsufficientBalance">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="message" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="createAccount">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="firstName" type="xs:string" />
+      <xs:element minOccurs="0" name="lastName" type="xs:string" />
+      <xs:element minOccurs="0" name="phoneNo" type="xs:string" />
+      <xs:element minOccurs="0" name="address" type="xs:string" />
+      <xs:element minOccurs="0" name="NIC" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="createAccountResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:createAccountRes" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getAccounts">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:complexType name="getAccountsResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:baseAccount" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="depositMoney">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="accountId" type="xs:string" />
+      <xs:element minOccurs="0" name="passCode" type="xs:string" />
+      <xs:element name="depositAmount" type="xs:double" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="depositMoneyResponse">
+    <xs:sequence>
+      <xs:element name="return" type="xs:double" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="checkAccountBalance">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="accountId" type="xs:string" />
+      <xs:element minOccurs="0" name="passCode" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="checkAccountBalanceResponse">
+    <xs:sequence>
+      <xs:element name="return" type="xs:double" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="transferMoney">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="transferAccountId" type="xs:string" />
+      <xs:element minOccurs="0" name="receiverAccountId" type="xs:string" />
+      <xs:element minOccurs="0" name="passCode" type="xs:string" />
+      <xs:element name="transferAmount" type="xs:double" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="transferMoneyResponse">
+    <xs:sequence>
+      <xs:element name="return" type="xs:double" />
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>
